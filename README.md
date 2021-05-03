@@ -1,11 +1,9 @@
-# patchwork-slovenia-mobile-landline
 
----
-title: "Basic demonstration of Patchwork"
-author: "Jernej Baranja"
-date: "5/2/2021"
-output: html_document
----
+# Basic demonstration of Patchwork
+#### Author: Jernej Baranja
+#### Version: 1.0
+#### Date: 5/2/2021
+#### Output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -31,7 +29,7 @@ landline <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/t
 # Lets make some plots
 
 ##### Slovenia mobile data
-```{r}
+```{r, fig.show='hide'}
 p1 <- mobile %>%
   filter(entity=="Slovenia") %>%
   ggplot(aes(x=year, y=mobile_subs, fill = year)) + 
@@ -41,8 +39,10 @@ p1 <- mobile %>%
 print(p1)
 ```
 
+![](mobile_Slovenia.png)
+
 ##### Slovenia landline data
-```{r}
+```{r, fig.show='hide'}
 p2 <- landline %>%
   na.omit() %>% 
   filter(entity=="Slovenia") %>%
@@ -53,7 +53,7 @@ p2 <- landline %>%
 print(p2)
 ```
 
-
+![](landline_Slovenia.png)
 
 
 # Now lets put these 2 plots together
@@ -67,3 +67,7 @@ p1 + inset_element(p2, right = 0.40,
 ```
 
 ![](insetting_with_patchwork_Slovenia.png)
+
+## Conclusion
+
+As shown in the graph, mobile telephony is on the rise and landline telephony is on the decline, which is to be expected.
